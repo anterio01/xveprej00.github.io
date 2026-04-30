@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Projekt - ITW</title>
+        <meta name="description" content="Osobní web jako součást ITW projektu na VUT FIT, předmětu ITW">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../styles/projects.css">
+    </head>
+    <body>
+        <header>
+        <h1>Tvorba <span>webových stránek</span></h1>
+        <nav>
+            <a href="../index.html#projects" aria-label="Link to main page"><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+        </nav>
+        </header>
+
+        <div class="intro">
+            <h2>Předmět</h2>
+            <p>
+                <span>Tvorba webových stránek</span> se zaměřuje na základy fungování internetu, adresování a umisťování dokumentů.
+                Studenti se seznámí s jazykem <span>HTML</span>, jeho strukturou a prostředky pro tvorbu webové prezentace,
+                včetně kaskádových stylů (<span>CSS</span>) a jejich integrace.
+            </p>
+            <p>
+                Součástí je také úvod do jazyka <span>JavaScript</span> a principů dynamického chování webových stránek.
+                Dále se probírá jazyk <span>XHTML</span> a jeho rozdíly oproti <span>HTML</span>. Důraz je kladen na návrh webové prezentace,
+                navigační strukturu, použitelnost a přístupnost stránek, stejně jako na jejich optimalizaci pro vyhledávače.
+            </p>
+        </div>
+
+        <section class="projects">
+            <div class="projects-intro">
+                <h3>Projekty</h3>
+                <p>
+                    Předmět nabízí 2 různé projekty. První projekt je jen o vytvoření <span>CSS</span> souboru, na již vytvořený <span>HTML</span>
+                    kód. Nebylo umožněno se jakkoliv dotýkat <span>HTML</span> kódu, tím pádem bylo cílem si vyzkoušet, jak přistupovat
+                    k elementům přes selektory bez použití <span>class</span> a <span>ID</span>. 
+                </p>
+                <p>
+                    Druhý projekt je spíše kreativní práce, kdy je cílem vytvořit vlastní webovou stránku od začátku.
+                    Hlavni požadavky jsou 5 sekcí a aspoň jedna sekce musí mít podsekce. Jestli vše bude na jednné
+                    či na více stránkách, je na studentovi. Čirou náhodou je tato webová stránka druhý projekt
+                    do předmětu <span>ITW</span>.
+                </p>
+            </div>
+
+            <svg class="divider-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-firstPart">
+                <div class="projects-firstPart-contents">
+                    <h4>První projekt</h4>
+                    <p>
+                        Úryvek z mnou vytvořeného CSS souboru. Lze ze především vidět, jak se musely používat
+                        selektory z důvodu, že né všechny elementy měly <span>class</span> či <span>ID</span>.
+                    </p>
+                    <p>
+                        Velmi časté využití našly i <span>pseudo třídy</span> a <span>pseudo elementy</span>.
+                    </p>
+                    <div class="codeblock">
+<code lang="en">...
+
+ #latest img, main #stories img, main #opinions img, main #celebrate img, main #events img, #editorial aside img, main > .ad video, #brian img {
+  filter: sepia(100%) brightness(1.05) contrast(0.9);
+ }
+
+ #latest img:hover, main #stories img:hover, main #opinions img:hover, main #celebrate img:hover, main #events img:hover, #editorial aside img:hover, main > .ad video:hover, #brian img:hover {
+  filter: sepia(0%) brightness(1) contrast(1);
+  transition: 0.5s;
+ }
+
+/* ====== Header ====== */
+
+ header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+    "heading heading weather"
+    "date life price"
+    "navbar navbar navbar";
+  padding-bottom: 1rem;
+ }
+
+ header div.title {
+  display: contents;
+ }
+
+ header div.title h1 {
+  grid-area: heading;
+  font-family: Amador;
+ }
+
+ header div.title h1 span:first-of-type {
+  display: block;
+  font-size: 3rem;
+  padding-left: 4rem;
+ }
+
+ header div.title h1 span:last-of-type {
+  display: block;
+  font-size: 5rem;
+  margin-top: -2rem;
+ }
+
+ header div.title div.subtitle {
+  grid-area: life;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  text-align: center;
+  font-size: 1.5rem;
+ }
+
+ header nav {
+  grid-area: navbar;
+ }
+
+ header nav ul {
+  display: flex;
+  padding: 0;
+  gap: 3em;
+  justify-content: center;
+ }
+
+ header nav ul li {
+  list-style: none;
+ }
+
+ header nav ul li a {
+  font-weight: lighter;
+  font-size: 1.2rem;
+ }
+
+...</code>
+                    </div>
+                </div>
+            </article>
+
+            <svg class="divider-bottom" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-secondPart">
+                <div class="projects-secondPart-contents">
+                    <h4>Druhý projekt</h4>
+                    <p>
+                        Čirou náhodou je druhý projekt přesně tato webová stránka.
+                        Cílem bylo si vyzkoušet techniky naučené z prvního projektu a přednášek
+                        a vytvořit webovou stránku o mě samotném. V projektu jsem si i oprášil
+                        své velmi staré znalosti jazyka <span>JavaScript</span> a mírně složitější využití
+                        <span>SVG</span> pro vlny, které jsou na stránce vidět.
+                    </p>
+
+                    <h5>HTML</h5>
+                    <div class="codeblock">
+<code lang="en">
+&lt;svg class="divider-bottom" viewBox="0 0 1000 300" preserveAspectRatio="none"&gt;
+    &lt;path
+        d="
+        M 0 0
+        L 0 150
+        C 250 80, 350 80, 500 150
+        C 650 220, 750 220, 1000 150
+        L 1000 0
+        Z
+        "
+    /&gt;
+&lt;/svg&gt;
+
+&lt;article class="projects-secondPart"&gt;
+    &lt;div class="projects-secondPart-contents"&gt;
+        &lt;h4&gt;Druhý projekt&lt;/h4&gt;
+        &lt;p&gt;
+            Čirou náhodou je druhý projekt přesně tato webová stránka.
+            Cílem bylo si vyzkoušet techniky naučené z prvního projektu a přednášek
+            a vytvořit webovou stránku o mě samotném. V projektu jsem si i oprášil
+            své velmi staré znalosti jazyka &lt;span&gt;JavaScript&lt;/span&gt; a mírně složitější využití
+            &lt;span&gt;SVG&lt;/span&gt; pro vlny, které jsou na stránce vidět.
+        &lt;/p&gt;
+
+        &lt;h5&gt;HTML&lt;/h5&gt;
+        &lt;div class="codeblock"&gt;
+&lt;code&gt;
+...looping???
+&lt;/code&gt;
+        &lt;/div&gt;
+
+        &lt;h5&gt;CSS&lt;/h5&gt;
+        &lt;div class="codeblock"&gt;
+&lt;code&gt;...
+div.codeblock {
+width: 700px;
+max-width: 100%;
+height: 300px;
+margin: auto;
+padding: 16px;
+box-sizing: border-box;
+
+overflow: auto;
+background: #1e1e1e;
+color: #dcdcdc;
+border: 1px solid #444;
+border-radius: 8px;
+
+font-family: Consolas, Monaco, monospace;
+font-size: 14px;
+...
+}
+...&lt;/code&gt;
+        &lt;/div&gt;
+
+        &lt;h5&gt;JavaScript&lt;/h5&gt;
+        &lt;div class="codeblock"&gt;
+&lt;code&gt;
+document.addEventListener("DOMContentLoaded", () =&gt; {
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navMenu = document.getElementById("navMenu");
+const icon = hamburgerBtn.querySelector("i");
+
+hamburgerBtn.addEventListener("click", (event) =&gt; {
+event.stopPropagation();
+
+navMenu.classList.toggle("active");
+
+icon.classList.toggle("fa-bars");
+icon.classList.toggle("fa-xmark");
+});
+
+document.addEventListener("click", (event) =&gt; {
+if (!navMenu.contains(event.target) &amp;&amp; !hamburgerBtn.contains(event.target)) {
+navMenu.classList.remove("active");
+
+icon.classList.add("fa-bars");
+icon.classList.remove("fa-xmark");
+}
+});
+...
+}
+
+...
+&lt;/code&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+
+&lt;svg id="divider-footer-top" viewBox="0 0 1000 300" preserveAspectRatio="none"&gt;
+    &lt;path
+        d="
+        M 0 0
+        L 0 150
+        C 250 80, 350 80, 500 150
+        C 650 220, 750 220, 1000 150
+        L 1000 0
+        Z
+        "
+    /&gt;
+&lt;/svg&gt;
+</code>
+                    </div>
+
+                    <h5>CSS</h5>
+                    <div class="codeblock">
+<code lang="en">...
+div.codeblock {
+  width: 700px;
+  max-width: 100%;
+  height: 300px;
+  margin: auto;
+  padding: 16px;
+  box-sizing: border-box;
+
+  overflow: auto;
+  background: #1e1e1e;
+  color: #dcdcdc;
+  border: 1px solid #444;
+  border-radius: 8px;
+
+  font-family: Consolas, Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre;
+
+  box-sizing: border-box;
+
+  transition: transform 0.3s ease;
+}
+
+div.codeblock:hover {
+  transform: scale(1.05);
+}
+
+div.codeblock code {
+    display: block;
+    text-align: left;
+}
+
+svg#divider-footer-top {
+  transform: scale(-1,-1);
+
+  fill: black;
+}
+...</code>
+                    </div>
+
+                    <h5>JavaScript</h5>
+                    <div class="codeblock">
+<code lang="en">
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const navMenu = document.getElementById("navMenu");
+  const icon = hamburgerBtn.querySelector("i");
+
+  hamburgerBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    navMenu.classList.toggle("active");
+
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+      navMenu.classList.remove("active");
+
+      icon.classList.add("fa-bars");
+      icon.classList.remove("fa-xmark");
+    }
+  });
+  ...
+}
+
+...
+</code>
+                    </div>
+                    <a href="../index.html" class="projects-contents-icon-link" aria-label="Link to second project"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            <svg class="divider-footer-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+        </footer>
+    </body>
+</html>

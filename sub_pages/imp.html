@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Projekt - IMP</title>
+        <meta name="description" content="Osobní web jako součást ITW projektu na VUT FIT, předmětu ITW">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../styles/projects.css">
+    </head>
+    <body>
+        <header>
+        <h1><span>Mikroprocesorové</span> a vestavěné systémy</h1>
+        <nav>
+            <a href="../index.html#projects" aria-label="Link to main page"><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+        </nav>
+        </header>
+
+        <div class="intro">
+            <h2>Předmět</h2>
+            <p>
+                Náplň se zaměřuje na základní pojmy, principy a praktické aplikace vestavěných zařízení.
+                Studenti se seznámí s architekturou mikrokontrolérů a paměťovým subsystémem.
+                Důraz je kladen na programovací model ARM jader, práci se zásobníkem a obsluhu přerušení.
+            </p>
+            <p>
+                Součástí je také programování periferních jednotek na čipu, jako jsou generátory hodin, časovače
+                a komunikační rozhraní (<span>UART, IIC, SPI</span>), včetně práce s analogovými i digitálními vstupy a výstupy.
+                Předmět zahrnuje i specifika programování vestavěných systémů v <span>jazyce C</span>.
+            </p>
+        </div>
+
+        <section class="projects">
+            <div class="projects-intro">
+                <h3>Projekt</h3>
+                <p>
+                    Předmět nabízí projekt, kde si student sám vyzkouší naprogramovat mikrokontroler v <span>jazyce C</span>, doplněný s dalšími
+                    komponentami. V mém případě se jednalo o vytvoření hry na I2C displayi, ovládaným přibaleným joystickem.
+                </p>
+            </div>
+
+            <svg class="divider-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-firstPart">
+                <div class="projects-firstPart-contents">
+                    <h4>Kód</h4>
+                    <p>
+                        V rámci předmětu <span>IMP</span> jsem realizoval projekt jednoduché hry Ping Pong,
+                        ovládané pomocí analogového joysticku. Cílem bylo prakticky si vyzkoušet práci s mikrokontrolérem ESP32 a jeho periferiemi.
+                    </p>
+                    <p>
+                        Hra využívá plynulý vstup z joysticku, který ovládá pohyb hráčovy pálky,
+                        a demonstruje tak práci s analogovým signálem. Důraz byl kladen především na správné zapojení a
+                        využití periferií, práci se vstupy a celkovou implementaci v <span>jazyce C</span>.
+                    </p>
+                    <div class="codeblock">
+
+<!--Code tag se chová tak, že bere i odsazení kódu tady v HTML jako stylování,
+takže jsem buď musel udělat negativní padding (tomu jsem se vyhnul) a nebo
+mít HTML kód takhle nepěkně "vytrhnut"-->
+
+<code lang="en">...
+
+//Herni cyklus
+static int game_cycle(uint32_t idle_voltage, int platform_width) {
+    int platform_x = (SCREEN_WIDTH - platform_width) / 2;
+    int score = 0;
+    bool game_over = false;
+
+    //Maximalni povolena rychlost kulicky
+    const float MAX_SPEED = 3.0f;
+
+    //Vytvoreni kulicky
+    ball ball = {
+        .x_coordinate = (float)(SCREEN_WIDTH / 2),
+        .y_coordinate = (float)(SCREEN_HEIGHT / 2),
+        //Pocet pixelu za "frame"
+        .x_speed = -1.2f,
+        .y_speed =  1.2f
+    };
+
+    static uint8_t pages[8][SCREEN_WIDTH];
+
+    //Vycisteni obrazovky pro zacatek hry
+    ssd1306_clear_screen(&dev, false);
+
+    while (!game_over) {
+        //Zjisteni nahnuti joysticku a tim rychlost platformy
+        uint32_t voltage = read_joystick_x();
+        int speed = get_speed(voltage, idle_voltage);
+
+        //Urceni pohybu doleva ci doprava
+        if (speed > 0) {
+            if (voltage &lt; idle_voltage) platform_x -= speed;
+            else if (voltage > idle_voltage) platform_x += speed;
+        }
+
+        //Udrzeni cele platformy na obrazovce
+        if (platform_x &lt; 0) platform_x = 0;
+        if (platform_x > SCREEN_WIDTH - platform_width) platform_x = SCREEN_WIDTH - platform_width;
+
+        //Predikce polohy kulicky
+        float x_next_frame = ball.x_coordinate + ball.x_speed;
+        float y_next_frame = ball.y_coordinate + ball.y_speed;
+
+        //Kontrola narazu na stenu, v takovem pripade udrzeni na obrazovce a reverzace "rychlosti"
+        if (x_next_frame &lt;= 0.0f) { x_next_frame = 0.0f; ball.x_speed = -ball.x_speed; }
+        if (x_next_frame >= (float)(SCREEN_WIDTH - BALL_SIZE)) { x_next_frame = (float)(SCREEN_WIDTH - BALL_SIZE); ball.x_speed = -ball.x_speed; }
+        if (y_next_frame &lt;= 0.0f) { y_next_frame = 0.0f; ball.y_speed = -ball.y_speed; }
+
+        //Kolize s platformou
+        //Souradnice spodniho pixelu kulicky a vrcholu platformy
+        float ball_bottom = y_next_frame + (float)(BALL_SIZE - 1);
+        float platform_top = (float)PLATFORM_Y;
+
+
+        if (ball_bottom >= platform_top) {
+            //Souradnice odkud pokud kulicka a platforma obsazuji x
+            float ball_left  = x_next_frame;
+            float ball_right = x_next_frame + (float)(BALL_SIZE - 1);
+
+            float platform_left  = (float)platform_x;
+            float platform_right = (float)(platform_x + platform_width - 1);
+
+            bool hit = !(ball_right &lt; platform_left || ball_left > platform_right);
+
+            //Kulicka trefila platformu, zvetsi se skore a rychlost kulicky
+            if (hit) {
+                score++;
+
+                //Kde kulicka trefila
+                float ball_center = x_next_frame + (BALL_SIZE / 2.0f);
+                float platform_center = platform_left + (platform_width / 2.0f);
+                float hit_position = (ball_center - platform_center) / (platform_width / 2.0f);
+                if (hit_position &lt; -1.0f) hit_position = -1.0f;
+                if (hit_position >  1.0f) hit_position =  1.0f;
+
+                //Zvyseni rychlosti podle skore
+                float speed_increase = 1.0f + (score / 3.0f);
+                if (speed_increase > MAX_SPEED) speed_increase = MAX_SPEED;
+
+                float dx = hit_position;
+                float dy = -1.0f;
+                //Zabraneni ciste vertikalnimu odrazeni, abychom se nezasekli
+                if (fabsf(dx) &lt; 0.15f) dx = (dx &lt; 0 ? -0.15f : 0.15f);
+
+                float len = sqrtf(dx*dx + dy*dy);
+                ball.x_speed = (dx / len) * speed_increase;
+                ball.y_speed = (dy / len) * speed_increase;
+
+                y_next_frame = platform_top - (float)BALL_SIZE - 1.0f;
+            } else {
+                game_over = true;
+            }
+        }
+
+        ball.x_coordinate = x_next_frame;
+        ball.y_coordinate = y_next_frame;
+
+        memset(pages, 0x00, sizeof(pages));
+
+        //Vykresleni kulicky a platformy
+        draw_on_pages(platform_x, PLATFORM_Y, platform_width, PLATFORM_H, pages);
+        draw_on_pages((int)(ball.x_coordinate + 0.5f), (int)(ball.y_coordinate + 0.5f), BALL_SIZE, BALL_SIZE, pages);
+
+        char score_line[22];
+        snprintf(score_line, sizeof(score_line), "Skore:%d            ", score);
+        score_line[21] = '\0';
+        ssd1306_display_text(&dev, 0, score_line, strlen(score_line), false);
+
+        for (int p = 1; p &lt; 8; p++) {
+            ssd1306_display_image(&dev, p, 0, pages[p], SCREEN_WIDTH);
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(20));
+    }
+
+    return score;
+}
+
+...
+</code>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1uRoOvEwIZlbOwvNQ3rxpnhK9QmoQUCAZ/view?usp=drive_link" class="projects-contents-icon-link" aria-label="Link to IMP video">
+                        <i class="fa-solid fa-link" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            <svg class="divider-footer-top-IMP" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+        </footer>
+    </body>
+</html>

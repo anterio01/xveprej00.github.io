@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My Website</title>
+        <meta name="description" content="Osobní web jako součást ITW projektu na VUT FIT, předmětu ITW">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="script/script.js"></script>
+    </head>
+    <body>
+        <header>
+        <h1>Jiří <span>Vepřek</span></h1>
+
+        <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navMenu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <nav id="navMenu" aria-label="Main navigation">
+                <a href="#aboutMe"><p>O mě</p></a>
+                <a href="#education"><p>Vzdělání</p></a>
+                <a href="#projects"><p>Projekty</p></a>
+                <a href="#hobby"><p>Hobby</p></a>
+                <a href="#favourites"><p>Oblíbené hry</p></a>
+            </nav>
+        </header>
+
+        <section id="aboutMe" class="aboutMe">
+            <div class="aboutMe-contents">
+                <div class="aboutMe-contents-heading">
+                    <h2>O mě</h2>
+                </div>
+                <div class="aboutMe-contents-text">
+                    <p>
+                        Narozen ve Šternberku v roce 2000. Celý svůj život žiji v menším městě jménem Uničov, kde jsem také chodil na základní školu.
+                    </p>
+                    <p>
+                        Pokud jde o projekty, ať už jde o školní či mimoškolní, tak nejraději pracuji na něčem kreativním. Na střední škole byl můj nejoblíbenější předmět
+                        o vytváření webových stránek, ale jelikož na střední škole není možné se obsáhlejší témata naučit, tak se tohle stala i částečně má mimoškolní aktivita.
+                    </p>
+                    <p>
+                        Považuji se celkem aktivního člověka, který rád vyrazí na výlety (bohužel ne během semestru na vysoké škole). Mezi mé oblíbené aktivity je plavání,
+                        kreslení (zatím se jen učím), jezdění na bruslích a také hraní her, ať už klasické deskové a karetní, na počítači či Dungeons & Dragons s kamarády ze zahraničí.
+                    </p>
+                </div>
+                <div class="aboutMe-contents-picture">
+                    <img src="imgs/profile_picture.png" alt="profile picture">
+                </div>
+            </div>
+        </section>
+
+        <svg class="divider-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path
+                d="
+                M 0 0
+                L 0 150
+                C 250 80, 350 80, 500 150
+                C 650 220, 750 220, 1000 150
+                L 1000 0
+                Z
+                "
+            />
+        </svg>
+
+        <section id="education" class="education">
+            <div class="education-contents">
+                <h2>Vzdělání</h2>
+                <article class="education-contents-elem">
+                    <div class="education-contents-elem-header">
+                        <h3>Základní škola <span>Pionýrů</span></h3>
+                        <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                    </div>
+
+                    <p>
+                        Základní školu Pionýrů jsem navštěvoval v letech 2007 - 2016. Nachází se ve městě Uničov
+                        v Olomouckém kraji. Byl jsem součástí "matematické třídy", během studia jsem se takové
+                        zúčastnil aktivit jako lyžařský kurz a zájezdu do Spojeného Království.
+                    </p>
+
+                    <p>Oblíbené předměty:</p>
+                    <ul>
+                        <li>Informatika</li>
+                        <li>Dějepis</li>
+                        <li>Český jazyk</li>
+                    </ul>
+
+                    <img src="imgs/education/zspionyr.jpg" alt="pionyr">
+
+                    <div class="education-links-container">
+                        <a href="https://www.zspionyru.cz/" aria-label="Elementary school link"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/ZSPionyru.cz" aria-label="Elementary school facebook link"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/zs_pionyru_unicov/" aria-label="Elementary school instagram link"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="education-contents-high">
+                    <div class="education-contents-high-header">
+                        <h3><span>VOŠ</span> a <span>SPŠ</span> Šumperk</h3>
+                        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    </div>
+
+                    <p>
+                        Střední škola VOŠ a SPŠ Šumperk mě částečně připravovala do života a na vysokou
+                        školu v letech 2016 - 2020. Můj zvolený obor byly Informační Technologie s volbou
+                        druhého cizíka jazyka Španělština. Zároveň jsem si také vyzkoušel, jaké to je
+                        maturovat během úplně prvního Covid lockdownu (Náš ročník byl obrán
+                        jen o slohovou část).
+                    </p>
+
+                    <p>Oblíbené předměty:</p>
+                    <ul>
+                        <li>Databáze</li>
+                        <li>CISCO Sítě</li>
+                        <li>Tvorba webových stránek</li>
+                    </ul>
+
+                    <img src="imgs/education/vossps.png" alt="VOS&SPS">
+
+                    <div class="education-links-container">
+                        <a href="https://vsps-su.cz/" aria-label="High school link"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/vspssumperk" aria-label="High school facebook link"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/prumyslovkasumperk/" aria-label="High school instagram link"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <article class="education-contents-uni">
+                    <div class="education-contents-uni-header">
+                        <h3>VUT <span>FIT</span></h3>
+                        <i class="fa-solid fa-user-graduate" aria-hidden="true"></i>
+                    </div>
+
+                    <p>
+                        Vysoké učení technické v Brně, Fakulta informačních technologii je od roku 2023 má volba vysoké školy, kde jsem
+                        momentálně ve třetím ročníku bakalářského studia.
+                    </p>
+
+                    <p>Oblíbené předměty:</p>
+                    <ul>
+                        <li>Databázové systémy</li>
+                        <li>Mikroprocesorové a vestavěné systémy</li>
+                        <li>Tvorba webových stránek</li>
+                    </ul>
+
+                    <img src="imgs/education/vutfit.jpg" alt="vutfit">
+                    <div class="education-links-container">
+                        <a href="https://www.fit.vut.cz/" aria-label="University link"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/FIT.VUT/" aria-label="University facebook link"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/fit.vut/" aria-label="University instagram link"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <svg class="divider-bottom" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path
+                d="
+                M 0 0
+                L 0 150
+                C 250 80, 350 80, 500 150
+                C 650 220, 750 220, 1000 150
+                L 1000 0
+                Z
+                "
+            />
+        </svg>
+        
+        <section id="projects" class="projects">
+            <div class="projects-contents">
+                <h2>Projekty</h2>
+                <div class="projects-contents-text">
+                    <p>
+                        Na VUT FIT mě nejvíce zatím bavily ty více kreativní projekty s nějakým vizuálním výsledkem, co nejsou
+                        jen výpisy nebo zelené fajfky (ikdyž je radost je všude vidět). Semafory, interpret, sítě mají také něco do sebe
+                        a byly velmi zajimavé, ale jejich výsledky přesně takové, jak jsem již zmínil.
+                    </p>
+                </div>
+
+                <div class="projects-contents-wrapper">
+                    <article class="projects-contents-idsCard">
+                        <i class="fa-solid fa-database" aria-hidden="true"></i>
+                        <h3>IDS</h3>
+                        <p>
+                            <span>Databázové systémy</span> nabízí projekt na vytvoření databáze.
+                            Projekt je rozdělen na 4 fáze, kdy v první se jedná jen o vytvoření ER diagramu
+                            a diagr...
+                         </p>
+                        <a href="sub_pages/ids.html" aria-label="Link to IDS project website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="projects-contents-impCard">
+                        <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+                        <h3>IMP</h3>
+                        <p>
+                            <span>Mikroprocesorové a vestavěné systémy</span> nabízí projekt na naprogramování mikrokontrelu.
+                            Je možné si vybrat ze několika možných témat, přičemž já...
+                        </p>
+                        <a href="sub_pages/imp.html" aria-label="Link to IMP project website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="projects-contents-itwCard">
+                        <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                        <h3>ITW</h3>
+                        <p>
+                            <span>Tvorba webových stránek</span> nabízí 2 projekty. Při prvním je už hotové HTML a je potřebova
+                            dovytvořit CSS. Druhý projekt je na téma vytvoření webové stránky o sobě...
+                        </p>
+                        <a href="sub_pages/itw.html" aria-label="Link to ITW project website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <svg class="divider-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path
+                d="
+                M 0 0
+                L 0 150
+                C 250 80, 350 80, 500 150
+                C 650 220, 750 220, 1000 150
+                L 1000 0
+                Z
+                "
+            />
+        </svg>
+
+        <section id="hobby" class="hobby">
+            <div class="hobby-contents">
+                <h2>Hobby</h2>
+                <div class="hobby-contents-text">
+                    <p>
+                        Hobby, jakožko volnočasová aktivita může v dnešní době už cokoliv. A i přes námitky některých, mezi ně patří i hry.
+                        V mém případě hry naprosto patří mezi hobby, dokonce jako možná i to hlavní, ale dokázal jsem si v nich najít jakési
+                        "vnořené" hobby. Focení lokací, ať už se jedná o nějakou vistu, kterou sami vývojáři na místo položili a nebo jsem jen
+                        náhodně otočil kamerou a pohled mě zaujal.
+                    </p>
+                </div>
+            </div>
+            <div class="carousel">
+            <button class="prev" aria-label="Previous slide">&#10094;</button>
+            
+            <!--Inspiration:  https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Overflow/Carousels--> 
+            <ul class="slides">
+                <li class="slide">
+                    <img src="imgs/slideshow/slideshow1.png" alt="Slide 1">
+                </li>
+                <li class="slide">
+                    <img src="imgs/slideshow/slideshow2.png" alt="Slide 2">
+                </li>
+                <li class="slide">
+                    <img src="imgs/slideshow/slideshow3.jpg" alt="Slide 3">
+                </li>
+                <li class="slide">
+                    <img src="imgs/slideshow/slideshow4.jpg" alt="Slide 3">
+                </li>
+            </ul>
+            <button class="next" aria-label="Next slide">&#10095;</button>
+            </div>
+        </section>
+
+        <svg class="divider-bottom" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path
+                d="
+                M 0 0
+                L 0 150
+                C 250 80, 350 80, 500 150
+                C 650 220, 750 220, 1000 150
+                L 1000 0
+                Z
+                "
+            />
+        </svg>
+
+        <section id="favourites" class="favourites">
+            <div class="favourites-contents">
+                <h2>Oblíbené hry</h2>
+                <div class="favourites-contents-text">
+                    <p>
+                        Mezi mé hlavní hobby se řadí hraní her. Což znamená, že jsem jich také plno vyzkoušel, dohrál na 100% a nebo také
+                        jen dokončil hlavní příběh, aby mi v knihovně neseděla zaprášená a nedokončená.
+                    </p>
+                    <p>
+                        Ohledně žánru nejsem moc vybíravý, ale preference samozřejmě mám. Moje nejoblíbenější jsou MMO, Open World RPG, které
+                        jsou zároveň hlavně fantasy. Nemám nic proti sci-fi, ale radši trávím čas nad něčím ze světa kouzel a magie, rytíři.
+                        Na žánry typu stříleček se bohužel řadím mezi takzvané "bezruké" a tudíž neumím mířit, takže jsou pro mě spíše zdrojem
+                        stresu.
+                    </p>
+                </div>
+                <div class="favourites-contents-wrapper">
+                    <article class="favourites-contents-wrapper-XIV">
+                        <h3>Final Fantasy XIV</h3>
+                        <img src="imgs/favourites/xiv.png" alt="xiv">
+                        <blockquote>
+                            "Have you heard of the critically acclaimed MMORPG Final Fantasy XIV?
+                            With an expanded free trial which you can play through the entirety of A Realm Reborn and the award-winning Shadowbringers expansion up to level 80
+                            for free with no restrictions on playtime.""
+                        </blockquote>
+                        <p>
+                            Asi můj nejoblíbenější žánr je MMO a tím bude i hra od <span>Square Enix</span>, FFXIV. Není to tak úplně kvůli možnosti hrát s mnoho lidmi,
+                            v mém případě jde spíš o to, že hry tohoto žánru mají "nekonečně" rozvíjející svět skrze aktualizace, dokud
+                            vývojáři neukončí podporu. Single player hry, ikdyž jejich příběh je mnohem propracovanější, tak od určitého bodu je konec a už nic nového
+                            hráč nezažije.
+                        </p>
+
+                        <p>
+                            Ikdyž tedy možnost hrát s lidmi není ten důvod, proč MMO hraji, tak i přesto jsem během posledních 5
+                            let nasbíral nespočetně mnoho vzpomínek a potkal plno lidí, s některými i v reálném světě.
+                        </p>
+                        <a href="https://eu.finalfantasyxiv.com/" aria-label="FFXIV website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="favourites-contents-wrapper-DAI">
+                        <h3>Dragon Age: Inqusition</h3>
+                        <img src="imgs/favourites/dai.png" alt="dai">
+                        <p>
+                            Společnost <span>BioWare</span> je známá za více herních řad, mezi
+                            mé oblíbené patří série Dragon Age, konkrétně díl Inquisition, který je v mých
+                            očích i taky poslední dobrý díl. 
+                        </p>
+
+                        <p>
+                            Jedna z mnoha single player s otevřeným světem, která (už i v předchozích dílech)
+                            měla mechaniku ovládání 4 postav zaráz. Místo klasického asymetrického pohledu
+                            a jako "tahovka" ale, byl normální pohled ze třetí osoby s možností pozastavit čas a každé
+                            postavě zvolit jen jednu akci, co po rozjetí času vykonají. 
+                        </p>
+                        <a href="https://www.ea.com/games/dragon-age/dragon-age-inquisition" aria-label="DAI website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="favourites-contents-wrapper-TESV">
+                        <h3>The Elder Scrolls V: Skyrim</h3>
+                        <img src="imgs/favourites/TESV.png" alt="tesv">
+                        <p>
+                            Kdokoliv, kdo se pohybuje ve světě her, o Elder Scrolls od <span>Bethesda</span> slyšel, s (v dnešní době)
+                            nejznámějším zastupitele řady, Skyrim. Hra, kterou Todd Howards dokáže znovu vydat
+                            pravděpodobně na čemkoliv, co má display.
+                        </p>
+                    
+                        <p>
+                            Skyrim, mimo single player, se dá navíc popsat jako takzvaný "úvod" do her s otevřeným
+                            světem a úplnovou svobodou dělat cokoliv se hráčovi zachce. To platí pouze v případě, pokud hráč
+                            není dostatečně starý na to, aby hrál předchozí díl zvaný Oblivion.
+                        </p>
+                        <a href="https://store.steampowered.com/app/489830/The_Elder_Scrolls_V_Skyrim_Special_Edition/" aria-label="TESV website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="favourites-contents-wrapper-NMS">
+                        <h3>No Man's Sky</h3>
+                        <img src="imgs/favourites/NMS.png" alt="nms">
+                        <p>
+                            Velmi známá hra od <span>Hello Games</span> svým skandálem v roce 2016, kdy trailer se velmi lišil od reality.
+                            Reputace No Man's Sky se ale lepší, protože za posledních několik let dostává
+                            aktualizace, které hru více rozšiřují a svým způsobem plní, co bylo slíbeno.
+                        </p>
+
+                        <p>
+                            Jedná se o single player s možným multiplayer módem. Původně hra měla být multiplayer
+                            v samotném základu, ale kvůli implementaci herního světa a 16 kvintiliónem planet je
+                            nemožné se s kýmkoliv náhodně potkat. Náplň hry se dá zkrácené popsat jako "prozkoumávání vesmíru".
+                        </p>
+                        <a href="https://www.nomanssky.com/" aria-label="NMS website"><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <svg class="divider-footer-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+        </footer>
+
+        <!--Inspiration:  https://www.w3schools.com/howto/howto_js_lightbox.asp*/--> 
+        <div class="lightbox" id="lightbox">
+            <img class="lightbox-img" src="placeholder" alt="ligthbox image">
+        </div>
+    </body>
+</html>

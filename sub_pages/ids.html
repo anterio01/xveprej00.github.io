@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Projekt - IDS</title>
+        <meta name="description" content="Osobní web jako součást ITW projektu na VUT FIT, předmětu ITW">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../styles/projects.css">
+    </head>
+    <body>
+        <header>
+        <h1>Databázové <span>systémy</span></h1>
+        <nav>
+            <a href="../index.html#projects" aria-label="Link to main page"><i class="fa-solid fa-house" aria-hidden="true"></i></a>
+        </nav>
+        </header>
+
+        <div class="intro">
+            <h2>Předmět</h2>
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <p>
+                Předmět <span>Databázové systémy</span> jsou o základech databázových systémů. Opakuje se zde vytváření konceptuálního
+                modelování a teorie relačního modelu dat, následně i návrh relační databáze z konceptuálního modelu, který
+                je součást projektu. Dále se studenti naučí jazyk SQL, transakce, architektury DBS. Vyzkouší si činnosti
+                administrátora databáze, pokud o optimalizaci a zotavení po poruše. 
+            </p>
+        </div>
+
+        <section class="projects">
+            <div class="projects-intro">
+                <h3>Projekt</h3>
+                <p>
+                    <span>Databázové systémy</span> nabízí projekt na vytvoření databáze.
+                    Projekt je rozdělen na 4 fáze, kdy v první se jedná jen o vytvoření
+                     konceptuálního modelu a diagram užití. V dalších částech
+                     je projekt o vytvoření skriptu pro databázi s cizímy klíči podle
+                     jejich návrhu, jednoduché dotazy, složitější dotazy, procedury, optimalizace.
+                </p>
+            </div>
+
+            <svg class="divider-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-firstPart">
+                <div class="projects-firstPart-contents">
+                    <h4>První část</h4>
+                    <p>
+                        Vytvoření konceptuálního modelu databáze je základ pro vytváření databází,
+                        jelikož je to prvotní a snadno upravitelný návrh, ze kterého se celá databáze
+                        staví. 
+                    </p>
+                    <div class="projects-firstPart-contents-images">
+                        <img src="imgs/projects/ids/er_diagram.png" alt="er diagram">
+                        <img src="imgs/projects/ids/pripad_uziti.png" alt="pripad uziti">
+                    </div>
+                </div>
+            </article>
+
+            <svg class="divider-bottom" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-secondPart">
+                <div class="projects-secondPart-contents">
+                    <h4>Druhá část</h4>
+                    <p>
+                        V této části projektu šlo i vytváření SQL skriptu. Hlavním cílem bylo udělat repliku
+                        konceptuálního modelu z předchozí části, tentokrát i s cizímy klíči. Mimo vytváření tabulek
+                        a vytvoření relací mezi nimi, bylo za úkol vytvořit i jednoduché triggers a sequences.
+                    </p>
+                    <div class="codeblock">
+ 
+<!--Code tag se chová tak, že bere i odsazení kódu tady v HTML jako stylování,
+takže jsem buď musel udělat negativní padding (tomu jsem se vyhnul) a nebo
+mít HTML kód takhle nepěkně "vytrhnut"-->
+                        
+<code lang="en">...
+
+CREATE TABLE OSOBA (
+ ID_osoby           number,
+ jmeno              varchar(15) not null,
+ prijmeni           varchar(20) not null,
+ adresa             varchar(30),
+ email              varchar(30) not null,
+ telefoni_cislo     varchar(13),
+ CONSTRAINT pk_osoba PRIMARY KEY (ID_osoby)
+);
+
+CREATE TABLE ZAMESTNANEC (
+ ID_osoby           number not null,
+ opravneni          varchar(20) not null,
+ CONSTRAINT pk_zamestnanec PRIMARY KEY (ID_osoby),
+ CONSTRAINT fk_zamestnanec_osoba FOREIGN KEY (ID_osoby)
+    REFERENCES OSOBA(ID_osoby)
+);
+
+...
+
+CREATE SEQUENCE osoba_seq START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE OR REPLACE TRIGGER trg_osoba_id
+BEFORE INSERT ON OSOBA
+FOR EACH ROW
+BEGIN
+  IF :NEW.ID_osoby IS NULL THEN
+    :NEW.ID_osoby := osoba_seq.NEXTVAL;
+  END IF;
+END;
+/
+
+...
+
+INSERT INTO OSOBA (jmeno, prijmeni, adresa, email, telefoni_cislo)
+VALUES ('Jan', 'Novák', 'Praha 1', 'jan.novak@example.com', '123456789')
+RETURNING ID_osoby INTO v_osoba_id1;
+  
+INSERT INTO OSOBA (jmeno, prijmeni, adresa, email, telefoni_cislo)
+VALUES ('Petra', 'Svobodová', 'Brno 2', 'petra.svobodova@example.com', '987654321')
+RETURNING ID_osoby INTO v_osoba_id2;
+
+...</code>
+                        
+                    </div>
+                </div>
+            </article>
+
+            <svg class="divider-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-thirdPart">
+                <div class="projects-thirdPart-contents">
+                    <h4>Třetí část</h4>
+                    <p>
+                        Předposlední část dále rozvíjela stejný SQL skript. Cílem bylo vytvořit selects nad tabulkami.
+                        Mimo jednoduché a přímé selects přesně podle například specifického ID, tak bylo požadováno využít
+                        i ORDER BY, GROUP BY, EXISTS.
+                    </p>
+                    <div class="codeblock">
+
+<!--Code tag se chová tak, že bere i odsazení kódu tady v HTML jako stylování,
+takže jsem buď musel udělat negativní padding (tomu jsem se vyhnul) a nebo
+mít HTML kód takhle nepěkně "vytrhnut"-->
+
+<code lang="en">...
+
+/* A simple select that picks out authors and their book titles */
+SELECT jmeno, prijmeni, titul
+FROM AUTOR JOIN KNIHA ON AUTOR.ID_autora = KNIHA.ID_autora JOIN PUBLIKACE ON KNIHA.ID_publikace = PUBLIKACE.ID_publikace;
+
+/* A simple select that picks out books that are/were loaned and their state */
+SELECT titul, stav_pujcky
+FROM PUJCKA JOIN PUBLIKACE ON PUJCKA.ID_publikace = PUBLIKACE.ID_publikace;
+
+/* A simple select that picks out books that are reserved and their date of reservation */
+SELECT titul, datum_rezervace
+FROM REZERVACE JOIN PUBLIKACE ON REZERVACE.ID_publikace = PUBLIKACE.ID_publikace;
+
+/* A simple select that picks out readers that have/had a loan */
+SELECT jmeno, prijmeni, titul
+FROM CTENAR JOIN OSOBA ON CTENAR.ID_osoby = OSOBA.ID_osoby JOIN PUJCKA ON PUJCKA.ID_ctenare = CTENAR.ID_osoby JOIN PUBLIKACE ON PUBLIKACE.ID_publikace = PUJCKA.ID_publikace
+ORDER BY prijmeni ASC;
+
+/* A select that picks out readers and the amount of their loans */
+SELECT jmeno, prijmeni, COUNT(*) AS pocet_pujcek
+FROM PUJCKA JOIN OSOBA ON PUJCKA.ID_ctenare = OSOBA.ID_osoby
+GROUP BY jmeno, prijmeni;
+
+/* A select that picks out the bindings of books and counts how many of them have either softcover or hardcover */
+SELECT vazba, COUNT(*) AS pocet_knih
+FROM KNIHA
+WHERE vazba IN ('měkká', 'tvrdá')
+GROUP BY vazba;
+
+/* A select that picks out names of readers with atleast 1 loan */
+SELECT jmeno, prijmeni
+FROM OSOBA
+WHERE EXISTS (
+  SELECT 1
+  FROM PUJCKA 
+  WHERE PUJCKA.ID_ctenare = OSOBA.ID_osoby
+);
+
+/* A select that picks out book titles that have been loaned atleast once */
+SELECT titul
+FROM PUBLIKACE
+WHERE ID_publikace IN (
+  SELECT ID_publikace
+  FROM PUJCKA
+);
+...
+</code>
+                    </div>
+                </div>
+            </article>
+
+            <svg class="divider-bottom" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+
+            <article class="projects-fourthPart">
+                <div class="projects-fourthPart-contents">
+                    <h4>Čtvrtá část</h4>
+                    <p>
+                        Poslední část naposledy rozvíjela vytvořený SQL skript. Především o procedury a indexaci.
+                        Úplné zakončení projektu potom byla obhajoba, osobně na VUT FIT.
+                    </p>
+                    <div class="codeblock">
+
+<!--Code tag se chová tak, že bere i odsazení kódu tady v HTML jako stylování,
+takže jsem buď musel udělat negativní padding (tomu jsem se vyhnul) a nebo
+mít HTML kód takhle nepěkně "vytrhnut"-->
+
+<code lang="en">...
+
+SET SERVEROUTPUT ON;
+ /* A procedure, that, when invoked, prints out the active loans of a specific reader */
+CREATE OR REPLACE PROCEDURE vypis_aktivni_pujcky_ctenare (
+  p_ctenar_id IN CTENAR.ID_osoby%TYPE
+)
+IS
+  -- Cursor to select active loans for the given reader
+  CURSOR c_aktivni_pujcky IS
+    SELECT p.ID_publikace,
+           p.titul,
+           pj.datum_pujcky,
+           pj.stav_pujcky
+    FROM PUJCKA pj
+    JOIN PUBLIKACE p ON pj.ID_publikace = p.ID_publikace
+    WHERE pj.ID_ctenare = p_ctenar_id
+      AND pj.stav_pujcky IN ('vypujceno', 'zpozdeno');
+
+  -- Variables with the usage of %TYPE
+  v_titul        PUBLIKACE.titul%TYPE;
+  v_datum_pujcky PUJCKA.datum_pujcky%TYPE;
+  v_stav         PUJCKA.stav_pujcky%TYPE;
+  v_id_pub       PUJCKA.ID_publikace%TYPE;
+BEGIN
+  -- Looping through the extracted rows
+  FOR pujcka_rec IN c_aktivni_pujcky LOOP
+    -- Tying the variables together
+    v_id_pub       := pujcka_rec.ID_publikace;
+    v_titul        := pujcka_rec.titul;
+    v_datum_pujcky := pujcka_rec.datum_pujcky;
+    v_stav         := pujcka_rec.stav_pujcky;
+
+    DBMS_OUTPUT.PUT_LINE('ID publikace: ' || v_id_pub || ', Titul: ' || v_titul || 
+                         ', Půjčeno dne: ' || TO_CHAR(v_datum_pujcky, 'YYYY-MM-DD') || 
+                         ', Stav: ' || v_stav);
+  END LOOP;
+END;
+/
+
+...
+
+/* EXPLAIN PLAN before index creation */
+EXPLAIN PLAN FOR
+SELECT z.typ_zanru, COUNT(k.ID_publikace) AS pocet_knih
+FROM ZANR z
+JOIN KNIHA_ZANR kz ON z.ID_zanru = kz.ID_zanru
+JOIN KNIHA k ON kz.ID_publikace = k.ID_publikace
+GROUP BY z.typ_zanru
+ORDER BY pocet_knih DESC;
+
+/* Show plan */
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+/* Create index to optimize */
+CREATE INDEX idx_knihazanr_zanr ON KNIHA_ZANR(ID_zanru);
+CREATE INDEX idx_knihazanr_publikace ON KNIHA_ZANR(ID_publikace);
+
+/* EXPLAIN PLAN after index creation */
+EXPLAIN PLAN FOR
+SELECT z.typ_zanru, COUNT(k.ID_publikace) AS pocet_knih
+FROM ZANR z
+JOIN KNIHA_ZANR kz ON z.ID_zanru = kz.ID_zanru
+JOIN KNIHA k ON kz.ID_publikace = k.ID_publikace
+GROUP BY z.typ_zanru
+ORDER BY pocet_knih DESC;
+
+/* Show plan */
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+...
+</code>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            <svg class="divider-footer-top" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path
+                    d="
+                    M 0 0
+                    L 0 150
+                    C 250 80, 350 80, 500 150
+                    C 650 220, 750 220, 1000 150
+                    L 1000 0
+                    Z
+                    "
+                />
+            </svg>
+        </footer>
+    </body>
+</html>
