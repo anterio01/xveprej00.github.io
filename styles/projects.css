@@ -236,11 +236,14 @@ div.projects-firstPart-contents-images {
 }
 
 div.projects-firstPart-contents-images img {
+  width: 100%;
   max-width: 500px;
 
   border-radius: 10px;
 
   transition: transform 0.3s ease;
+
+  box-sizing: border-box;
 }
 
 div.projects-firstPart-contents-images img:hover {
