@@ -83,7 +83,6 @@ div.favourites-contents {
   position: relative;
 
   max-width: 1200px;
-  min-width: 320px;
 
   margin: auto;
 
@@ -333,7 +332,7 @@ div.education-contents article {
 
   transition: transform 0.3s ease;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 div.education-contents article:hover {
@@ -546,6 +545,7 @@ div.favourites-contents-wrapper {
 
 article.favourites-contents-wrapper-XIV {
   grid-area: XIV;
+  margin-top: 2rem;
 }
 
 article.favourites-contents-wrapper-DAI {
