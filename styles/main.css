@@ -541,11 +541,11 @@ div.favourites-contents-wrapper {
 
   padding-left: 2rem;
   padding-right: 2rem;
+  margin-top: 2rem;
 }
 
 article.favourites-contents-wrapper-XIV {
   grid-area: XIV;
-  margin-top: 2rem;
 }
 
 article.favourites-contents-wrapper-DAI {
