@@ -83,7 +83,7 @@ div.favourites-contents {
   position: relative;
 
   max-width: 1200px;
-  min-width: 700px;
+  min-width: 320px;
 
   margin: auto;
 
@@ -144,7 +144,7 @@ nav {
   align-items: center;
 
   position: fixed;
-  top: 6%;
+  top: 7%;
   left: 0;
   right: 0;
   z-index: 999;
@@ -300,6 +300,9 @@ div.education-contents {
 
   gap: 2rem;
 
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   text-align: left;
 }
 
@@ -328,7 +331,9 @@ div.education-contents article {
   background-color: #eff2f1;
   border-radius: 10px;
 
-  transition: transform 0.3s ease
+  transition: transform 0.3s ease;
+
+    box-sizing: border-box;
 }
 
 div.education-contents article:hover {
@@ -422,6 +427,8 @@ article.projects-contents-itwCard {
   border-radius: 10px;
 
   transition: transform 0.3s ease;
+
+
 }
 
 article.projects-contents-idsCard:hover,
@@ -532,6 +539,9 @@ div.favourites-contents-wrapper {
     "NMS";
 
   justify-content: center;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 article.favourites-contents-wrapper-XIV {
@@ -558,6 +568,7 @@ div.favourites-contents-wrapper article {
   border-radius: 10px;
 
   transition: transform 0.3s ease;
+  box-sizing: border-box;
 }
 
 div.favourites-contents-wrapper article:hover {
@@ -616,3 +627,4 @@ div.favourites-contents-wrapper article i {
 
   border-radius: 10px;
 }
+
